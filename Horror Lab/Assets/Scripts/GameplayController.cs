@@ -14,6 +14,8 @@ public class GameplayController : MonoBehaviour
     private int currentTaskIndex;
     private ObjectiveData currentObjective;
 
+    public static bool hasKey = false;
+
     private IEnumerator Start()
     {
         yield return null;
@@ -98,4 +100,26 @@ public class GameplayController : MonoBehaviour
             LoadCurrentTask();
         }
     }
+
+    public void OnObjectiveComplete()
+    {
+        uiManager.FadeInAndLoadGameplay(() =>
+        {
+            StartCoroutine(WaitAndLoadGameplay());
+        });
+    }
+
+    private IEnumerator WaitAndLoadGameplay()
+    {
+        yield return null;
+
+        ObjectiveManager.Instance.CompleteCurrentObjective();
+
+        yield return null;
+
+        // Load gameplay after the wait
+        GameManager.Instance.LoadGameplay();
+    }
+
+
 }

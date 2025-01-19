@@ -82,17 +82,18 @@ public class UIManager : MonoBehaviour
     }
 
     // Fades in the black screen, displays "End of Day X", and calls LoadGameplay
-    public void FadeInAndLoadGameplay()
+    public void FadeInAndLoadGameplay(System.Action onFadeComplete = null)
     {
-        StartCoroutine(FadeInAndLoadCoroutine());
+        AudioManager.Instance.PlaySFX("level");
+        StartCoroutine(FadeInAndLoadCoroutine(onFadeComplete));
     }
 
-    private IEnumerator FadeInAndLoadCoroutine()
+    private IEnumerator FadeInAndLoadCoroutine(System.Action onFadeComplete)
     {
         if (blackPanel != null)
         {
             blackPanel.gameObject.SetActive(true);
-            float fadeDuration = 1.5f; // Duration for fade-in effect
+            float fadeDuration = 2f; // Duration for fade-in effect
             Color panelColor = blackPanel.color;
 
             // Gradually increase alpha
@@ -121,10 +122,11 @@ public class UIManager : MonoBehaviour
                 dayText.gameObject.SetActive(false);
             }
 
-            // Call LoadGameplay
-            GameManager.Instance.LoadGameplay();
+            // Invoke the callback once fade-in is complete
+            onFadeComplete?.Invoke();
         }
     }
+
 
     // Fades out the black screen at the start of the game
     private IEnumerator FadeOutCoroutine()

@@ -13,7 +13,12 @@ MonoBehaviour:
   m_Name: ObjectiveData 1
   m_EditorClassIdentifier: 
   objectiveName: Find Books and Put in the box
-  taskDescription: OKay soon..............................................................................................................
+  taskDescription: '"Echoes of Past" from the History section.
+
+    "Wonders of Universe"
+    from the Science section.
+
+    "Soul Whispers" from the Poetry section.'
   defaultPosition: {x: 47.702747, y: 1.11, z: 9.906158}
   defaultRotation: {x: 0, y: 180, z: 0}
   isCompleted: 0

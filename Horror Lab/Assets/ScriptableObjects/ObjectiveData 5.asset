@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 445ffc3eeef272c4d81f2bc2e1438544, type: 3}
+  m_Name: ObjectiveData 5
+  m_EditorClassIdentifier: 
+  objectiveName: Key To Knowledge
+  taskDescription: 'These three books are the keys to the next secret. Place them
+    on the shelves in the correct order.
+
+    Arrange them carefully, and the library
+    will reveal its hidden secrets.'
+  defaultPosition: {x: 61.58, y: 1.11, z: -48.88}
+  defaultRotation: {x: 0, y: 0, z: 0}
+  isCompleted: 0

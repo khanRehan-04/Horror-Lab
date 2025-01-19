@@ -8,6 +8,7 @@ public class NoteInteractable : MonoBehaviour, IInteractable
 
     public void Interact()
     {
+        AudioManager.Instance.PlaySFX("paper");
         gameplayController.ShowTaskWithDelay();
     }
 

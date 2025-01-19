@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using System.Collections;
 public class BookInteractable : MonoBehaviour, IInteractable
 {
     [SerializeField] private string interactableName = "Book";
@@ -7,10 +7,6 @@ public class BookInteractable : MonoBehaviour, IInteractable
 
     private bool isPickedUp = false;
     private static BookInteractable pickedUpBook = null; // Track the currently picked-up book
-
-   // public GameplayController gameplayController;
-
-    public UIManager uIManager;
 
     public void Interact()
     {
@@ -37,14 +33,13 @@ public class BookInteractable : MonoBehaviour, IInteractable
 
     private void PickUp()
     {
+        AudioManager.Instance.PlaySFX("pick");
         isPickedUp = true;
         pickedUpBook = this; // Mark this book as picked up
         transform.SetParent(handPosition); // Attach to the player's hand
         transform.position = handPosition.position; // Snap to the hand's position
         transform.rotation = handPosition.rotation; // Align rotation with the hand
         Dbg.Log($"{interactableName} has been picked up!");
-
-        uIManager.FadeInAndLoadGameplay();
     }
 
     public void Drop()

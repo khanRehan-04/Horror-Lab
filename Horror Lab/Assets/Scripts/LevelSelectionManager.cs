@@ -1,7 +1,5 @@
 using UnityEngine;
-using UnityEngine.UI; // Import for UI components
-using UnityEngine.SceneManagement; // Import for scene management
-using System.Collections.Generic;
+using System.Collections;
 
 public class LevelSelectionManager : MonoBehaviour
 {
@@ -13,8 +11,15 @@ public class LevelSelectionManager : MonoBehaviour
     public void LoadNewGame()
     {
         AudioManager.Instance.PlaySFX("click");  //Click SFX
-        GameManager.Instance.ResetGame();
-        GameManager.Instance.LoadGameplay();
+        ObjectiveManager.Instance.ResetObjectiveProgress();
+
+        StartCoroutine(WaitAndLoadGameplay());
+
     }
 
+    private IEnumerator WaitAndLoadGameplay()
+    {
+        yield return null;
+        GameManager.Instance.LoadGameplay();
+    }
 }

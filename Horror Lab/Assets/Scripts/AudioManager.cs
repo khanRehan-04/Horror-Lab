@@ -40,9 +40,6 @@ public class AudioManager : Singleton<AudioManager>
         taskAudioSource = gameObject.AddComponent<AudioSource>();
         taskAudioSource.volume = sfxVolume;
         taskAudioSource.loop = false; // Task audio doesn't loop
-
-        // Subscribe to the sceneLoaded event to handle scene music
-        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void InitializeSounds(List<Sound> sounds, float volumeMultiplier)
@@ -139,29 +136,9 @@ public class AudioManager : Singleton<AudioManager>
         taskAudioSource.volume = sfxVolume;
     }
 
-    private void PlaySceneMusic()
+    private void Start()
     {
-        string sceneName = SceneManager.GetActiveScene().name;
-        if (sceneName == "House")
-        {
-            PlayMusic("BG2");
-            StopMusic("BG1");
-        }
-        else
-        {
             PlayMusic("BG1");
-            StopMusic("BG2");
-        }
-    }
-
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        PlaySceneMusic();
-    }
-
-    private void OnDestroy()
-    {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     // Added: Play a specific audio clip for tasks

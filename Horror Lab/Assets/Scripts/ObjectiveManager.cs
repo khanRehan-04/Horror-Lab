@@ -72,7 +72,7 @@ public class ObjectiveManager : Singleton<ObjectiveManager>
     // Mark the current objective as completed
     public void CompleteCurrentObjective()
     {
-        if (currentObjectiveIndex < objectives.Count)
+        if (currentObjectiveIndex < 4)
         {
             // Mark the current objective as completed
             objectives[currentObjectiveIndex].isCompleted = true;
@@ -98,7 +98,7 @@ public class ObjectiveManager : Singleton<ObjectiveManager>
         }
         else
         {
-            Debug.LogError("CompleteCurrentObjective called but no objectives are left.");
+            ResetObjectiveProgress();
         }
     }
 

@@ -36,7 +36,6 @@ public class GameManager : Singleton<GameManager>
     public void LoadMainMenu()
     {
         nextScene = "MainMenuScene";
-        Dbg.Log($"Loading Main Menu. Next scene: {nextScene}");
         UnityEngine.SceneManagement.SceneManager.LoadScene("SplashScene");
     }
 
@@ -53,7 +52,6 @@ public class GameManager : Singleton<GameManager>
     // Get the next scene to load
     public string GetNextScene()
     {
-        Dbg.Log($"GetNextScene called. Returning: {nextScene}");
         return nextScene;
     }
 }
